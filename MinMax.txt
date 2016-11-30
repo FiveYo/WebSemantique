@@ -1,0 +1,26 @@
+Implémenter l'algo min max.
+
+Le problème est notre modélisation du jeu, il faut qu'on ait une bonne modélisation.
+
+Il faut que l'on créé un arbre qui représente les coups des joueurs dans l'ordre ou ils vont joué.
+
+Pour l'instant laissons IA pari de côté.
+
+IAChoisi doit créér un graphe qui tient compte de sa position actuelle, des différentes cartes que je peux jouer (donne le nombre de branche),
+ensuite je créé le même arbre pour le suivant que je colle à chacune des branches, en tenant compte de sa position mais la je prends en compte les différentes
+carte qu'il peut jouer et ainsi de suite jusqu'au dernier joueur, j'ai alors la un arbre complet pour un tour
+
+Au début au lieu de savoir quelle carte il va jouer on peut imaginer de juste regarder si il joue au dessus de moi ou en dessous, avec les probabilités en fonction
+de la carte que j'ai joué et sa position
+
+Il faut alors faire la même chose pour chaque feuille de cet arbre, à la fin de chaque feuille de cet arbre, je sais qui est le gagnant du tour et donc quel est mon tour,
+et je peux reconstruire un arbre à la suite de cette feuille qui représente le deuxième tour
+
+On s'arrête à 2 tour pour l'instant, pour aller jusqu'en bas de l'arbre
+on utilise un heuristique en regardant simplement les cartes qu'il nous reste et on calcul 
+la probabilité de gagné : exemple il nous reste qu'un roi de carreau, 30/32 chance de faire un pli en plus, du coup on a un parcours d'arbre à faire
+en utilisant minmax et l'heuristique de fin, il reste à choisir le chemin ou on fait exactement le nombre de pli qu'on souhaite faire.
+
+
+Je pense IA pari doit regarder cet arbre et regarder quel chemin est le plus sure.
+
