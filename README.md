@@ -42,3 +42,7 @@ Pour sortir de l'env :
 En dehors de l'env installer les outils suivants
 
 - Ipython
+
+### Vocabulaire
+
+**URI** : de l'anglais *Uniform Resource Identifier*, soit littéralement identifiant uniforme de ressource, est une courte chaîne de caractères identifiant une ressource sur un réseau (par exemple une ressource Web) physique ou abstraite, et dont la syntaxe respecte une norme d'Internet mise en place pour le World Wide Web
