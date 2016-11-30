@@ -30,6 +30,7 @@ On installe les librairies (quand il y en a des nouvelles) :
 
 Si on ajoute une librairie :
 
+    (env) $ pip install *nomDeLaLibrairie*
     (env) $ pip freeze > requirements.txt
 
 Pour sortir de l'env :
