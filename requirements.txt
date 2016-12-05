@@ -1,0 +1,4 @@
+SPARQLWrapper
+rdflib
+pyspotlight
+Django==1.10.3
