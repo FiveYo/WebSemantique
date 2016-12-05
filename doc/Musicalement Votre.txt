@@ -1,16 +1,7 @@
-De quoi j'ai besoin ?
 
-Je veux chercher une gamme, ou une musique à apprendre
+---------------------- Musicalement Votre -----------------------------
 
-Deux boutons -> 
-
-    Théorie : apprentissage des gammes, positions accords suivant les octaves
-
-    Pratique : sort une liste de morceau populaire dans cette tonalité, ou utilisant cet accord 
+Tu veux apprendre une musique sur ton instrument préférer mais galère
 
 
-Intéréssant d'avoir un tuto Youtube
-
-
-Style de musique :
 
