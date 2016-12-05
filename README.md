@@ -9,6 +9,8 @@ On va chercher des informations sur des musiques orienté instruments, c'est à 
 On va récupérer en premier lieu la musique originale (Youtube, deezer, spotify, etc), ensuite on va chercher les covers associés avec l'instruments
 Ensuite, on va chercher les partitions/tablatures/video d'apprentissage. Les informations sur la musique (Wikipédia), instruments présents dans la musique
 
+Nettoyage du code html des pages avec AlchemyAPI, puis identification des entités avec DBpedia Spotlight
+
 
 ## Répartition des tâches
 
