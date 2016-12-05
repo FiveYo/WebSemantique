@@ -1,0 +1,31 @@
+Enrichit les résultats d'un moteur de recherche
+
+Requete de recherche Google -> enreichissement résultatt
+
+    Enrichissement : recup 10 premier resultat, recup le texte de ces docs,, a partir de ces txt avec certains API extraires URI
+
+A partir de ces URI récupérer des triplets
+
+  ---> solutions : calculer graphe similarité puis renvois URL
+
+AlchemyApi -> extrait le texte à partir des URLs
+
+DBPedia Spotlight : à partir des textes extraits des URIs, depuis DBpédia
+
+Calcul graphe de similarité, on utilise l'indice de Jaccard(A,B) = |A n B| / |A u B|
+
+On obtient une matrice      
+
+
+      URL1... ... ... URLn
+ URL1|1
+     |
+URLn..                  1
+
+
+On peut changer le classement de google pour la pertinence, exemple de projet fait : en entrée le nom d'une requête et en sortie des "snippets".
+
+Language de programmation libre (conseillé Python).
+
+Tâche : Choisir moteur de recherche, utiliser API qui me renvoie un format lisible par l'homme (type JSon)
+Je récupère des URLs et je vais requêter chaque site pour avoir un résumé du contenu du site
