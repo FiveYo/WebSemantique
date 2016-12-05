@@ -1,5 +1,15 @@
 # Projet Web Sémantique
 
+## Explications
+
+On va chercher des informations sur des musiques orienté instruments, c'est à dire comme expemple de requêtes:
+
+    !g starway to heaven piano
+
+On va récupérer en premier lieu la musique originale (Youtube, deezer, spotify, etc), ensuite on va chercher les covers associés avec l'instruments
+Ensuite, on va chercher les partitions/tablatures/video d'apprentissage. Les informations sur la musique (Wikipédia), instruments présents dans la musique
+
+
 ## Répartition des tâches
 
 - Requête moteur de recherche + stockage résultats : 
@@ -42,3 +52,4 @@ Pour sortir de l'env :
 En dehors de l'env installer les outils suivants
 
 - Ipython
+
