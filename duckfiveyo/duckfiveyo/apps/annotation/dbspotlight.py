@@ -1,5 +1,6 @@
 import sys
 
+import musicbrainzngs
 import spotlight
 
 LANG_PORTS = {
@@ -22,11 +23,19 @@ spotlightURL = "http://spotlight.sztaki.hu:{0}/rest/annotate".format(LANG_PORTS[
                                                                      "english"])
 
 
-def annotations(text):
+def musicbrainzInit():
+    musicbrainzngs.set_useragent("duckfiveyo", "v0.1")
+
+
+def annotations(request, urls, text):
     annot = spotlight.annotate(
         spotlightURL, text, confidence=0.4, support=20, spotter='Default')
+    musicbrainzInit()
+    mbz = musicbrainzngs.search_recordings(text)
+    mbz = [x for x in mbz if x['position'] < 5]
+    annot.append(mbz)
     return annot
 
 if __name__ == "__main__":
     text = sys.argv[1]
-    print(annotations(text))
+    print(annotations("", "", text))
