@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col l4 m5 s8 offset-s2">
+            <form class="center" action="{% url 'result' %}" method="GET">
+                <input placeholder="Starway to heaven, guitare" name="query" type="text" class="validate col" value="{{arguments.query}}">
+                <button class="btn waves-effect waves-light button-absolute" type="submit">
+                    <i class="material-icons">send</i>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!--Web / Image / ...-->
+    <div class="row">
+        <ul class="tabs">
+            <li class="tab col s3"><a class="active" href="#web">Web</a></li>
+            <li class="tab col s3"><a href="#images">Image</a></li>
+            <li class="tab col s3"><a href="#videos">Cover</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div id="web" class="row">
+                <!--Tout (Web)-->
+                <div class="col s12">
+                    Parti web
+                </div>
+            </div>
+            <div id="images" class="row">
+                <div class="col s12">
+                    Parti image
+                </div>
+            </div>
+            <div id="videos" class="row">
+                <div class="col s12">
+                    Parti Cover
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+        
