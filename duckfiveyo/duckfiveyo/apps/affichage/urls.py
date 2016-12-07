@@ -6,5 +6,4 @@ from .views import home, ask
 urlpatterns = [
     url(r'^$', home, name="home"),
     url(r'^result', ask, name="result"),
-    
 ]

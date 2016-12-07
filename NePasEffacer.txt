@@ -1,0 +1,4 @@
+clé API : AIzaSyDG6Nig_usu4seBML0F2Gn9eC58KeRSIW4
+cx : 011588310783855289769:6ld0iqjum24
+
+https://www.googleapis.com/customsearch/v1?key=AIzaSyDG6Nig_usu4seBML0F2Gn9eC58KeRSIW4&cx=011588310783855289769:6ld0iqjum24&q=stairway+to+heaven
