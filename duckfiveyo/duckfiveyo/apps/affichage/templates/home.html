@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container lighten-5">
+    <div class="home valign-wrapper row">
+        <div class="valign center col s8 offset-s2">
+            <div class="row">
+                <img class="responsive-img" src="http://www.logo20.com/logo.png" alt="logo">
+            </div>
+            <div class="row">
+                <form class="col l8 offset-l2 m8 offset-m2 s12" action="{% url 'result' %}" method="GET">
+                    <input placeholder="Starway to heaven, guitare" name="query" type="text" class="validate col">
+                    <button class="btn waves-effect waves-light button-absolute" type="submit">
+                        <i class="material-icons">send</i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

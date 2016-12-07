@@ -1,0 +1,13 @@
+.home{
+    height: 100vh;
+}
+
+.button-absolute{
+    position: absolute;
+}
+
+@media only screen and (max-width: 540px) {
+    .button-absolute{
+        position: initial;
+    }
+}
