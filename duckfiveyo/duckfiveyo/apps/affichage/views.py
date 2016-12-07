@@ -1,6 +1,8 @@
 from django.http.response import HttpResponseNotAllowed
 from django.shortcuts import render_to_response
 
+from duckfiveyo.apps.annotation.dbspotlight import annotations
+
 def home(request):
     return render_to_response("home.html")
 
@@ -13,7 +15,9 @@ def ask(request):
     else:
         return HttpResponseNotAllowed(("GET", "POST"))
 
-    print(arguments["query"])
+    query = arguments["query"]
+
+    liste = annotations(query, "", "")
 
     return render_to_response("result.html", locals())
 

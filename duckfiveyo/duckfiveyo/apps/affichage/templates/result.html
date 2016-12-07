@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col l4 m5 s8 offset-s2">
             <form class="center" action="{% url 'result' %}" method="GET">
-                <input placeholder="Starway to heaven, guitare" name="query" type="text" class="validate col" value="{{arguments.query}}">
+                <input placeholder="Starway to heaven, guitare" name="query" type="text" class="validate col" value="{{ query }}">
                 <button class="btn waves-effect waves-light button-absolute" type="submit">
                     <i class="material-icons">send</i>
                 </button>
@@ -28,7 +28,7 @@
             <div id="web" class="row">
                 <!--Tout (Web)-->
                 <div class="col s12">
-                    Parti web
+                    {{ liste }}
                 </div>
             </div>
             <div id="images" class="row">
