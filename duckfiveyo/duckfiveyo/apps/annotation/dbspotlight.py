@@ -29,9 +29,9 @@ def musicbrainzInit():
 
 def annotations(request, urls, text):
     annot = spotlight.annotate(
-        spotlightURL, text, confidence=0.4, support=20, spotter='Default')
+        spotlightURL, request, confidence=0.4, support=20, spotter='Default')
     musicbrainzInit()
-    mbz = musicbrainzngs.search_recordings(text)
+    mbz = musicbrainzngs.search_recordings(request)
     mbz = [x for x in mbz if x['position'] < 5]
     annot.append(mbz)
     return annot
