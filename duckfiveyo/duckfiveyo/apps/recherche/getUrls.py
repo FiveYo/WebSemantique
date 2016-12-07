@@ -10,7 +10,7 @@ from urllib.request import urlopen
 import json
 
 
-def getURLs(query):
+def getURLs(query, ):
 
     url = 'http://api.duckduckgo.com/?q='+query+'&format=json'
 
