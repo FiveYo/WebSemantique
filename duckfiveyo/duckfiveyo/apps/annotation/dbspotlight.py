@@ -17,11 +17,16 @@ LANG_PORTS = {
 
 spotlightURL = "http://spotlight.dbpedia.org:{0}/rest/annotate".format(LANG_PORTS[
                                                                        "french"])
-
 spotlightURL = "http://spotlight.dbpedia.org/rest/annotate"
 spotlightURL = "http://spotlight.sztaki.hu:{0}/rest/annotate".format(LANG_PORTS[
                                                                      "english"])
-text = sys.argv[1]
-annotations = spotlight.annotate(
-    spotlightURL, text, confidence=0.4, support=20, spotter='Default')
-print(annotations)
+
+
+def annotations(text):
+    annot = spotlight.annotate(
+        spotlightURL, text, confidence=0.4, support=20, spotter='Default')
+    return annot
+
+if __name__ == "__main__":
+    text = sys.argv[1]
+    print(annotations(text))
