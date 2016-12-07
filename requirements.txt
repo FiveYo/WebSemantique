@@ -1,4 +1,5 @@
 SPARQLWrapper
 rdflib
 pyspotlight
+musicbrainzngs
 Django==1.10.3
