@@ -1,5 +1,7 @@
 # Projet Web Sémantique
 
+##A FAIRE ABSOLUMENT
+Dans votre projet en local aller dans "\env\Lib\site-packages\rdflib\plugins\parsers", ouvrir le __init__ dans un éditeur, aller à la ligne 612 et changer le "encoding" en "override_encoding" 
 ## Explications
 
 On va chercher des informations sur des musiques orienté instruments, c'est à dire comme expemple de requêtes:
