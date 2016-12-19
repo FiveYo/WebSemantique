@@ -1,3 +1,3 @@
-from getUrls import getURLs
+from testApiGoogle import getURLsGoogle
 
-getURLs('piano')
+getURLsGoogle('piano')
