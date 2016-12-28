@@ -8,6 +8,10 @@ import requests
 import json
 import re
 
+
+
+
+#####################################################################GRAPHE####################################################################################################
 def graphRDF(donneeEntree):
     listeGraph = []
     #for data in donneeEntree:
@@ -59,10 +63,12 @@ def graphRDFVrai():
 
 
 
-#TODO POST TRAITEMENT SUJET VERBE OBJET 
-#TODO POST TRAITEMENT SVO
-#TODO DICTIONNAIRE [album, artiste,...]
+#TODO POST TRAITEMENT SUJET VERBE OBJET OK BOF
+#TODO POST TRAITEMENT SVO OK BOF
+#TODO DICTIONNAIRE [album, artiste,...] OK BOF 
 
+        
+        
         
 ########################################################MATRICE SIMILARITE #########################################################
 def includeMatrice(M1,M2):
@@ -217,6 +223,7 @@ def percentage(part, whole):
 # Pour utiliser tu fait 
 # routineQuery(cequetuveuxchercher)
 def createUrl(parametres):
+    #genere l'url de google api en fonction des paramètre
     keyApi= 'AIzaSyDG6Nig_usu4seBML0F2Gn9eC58KeRSIW4'
     Cx = '011588310783855289769:6ld0iqjum24'
     Url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDG6Nig_usu4seBML0F2Gn9eC58KeRSIW4&cx=011588310783855289769:6ld0iqjum24&q='
@@ -227,15 +234,18 @@ def createUrl(parametres):
     return Url
     
 def recupJsonText(Url):
+    #Recupere via une url le code Json
     page = requests.get(Url)
     jsonFile= json.loads(page.content.decode("utf-8"))
     return jsonFile
 
 def dataView (jsonFile):
     #TODO
+    #Recupere les donnes clés (artiste ....) 
     return 0 
     
 def recupUrlText(jsonFile):
+    #Recupere l'Url via le code Json
     listeUrl=[]
     DictItem = jsonFile["items"]
     for itemsIndex in range (len(DictItem)):
@@ -244,7 +254,7 @@ def recupUrlText(jsonFile):
         
 
 def recupHtmlText(Url):
-    
+    #AVec l'url du code Json, on recupere le text du site via Alchemy
     AlchemyObject = AlchemyAPI()
     response = AlchemyObject.text('url', Url)
     text= response["text"]
@@ -268,25 +278,31 @@ def routineQuery(requete):
             liste_item_musique.remove(item)
             
     dico_query={}
-    dico_temp={}
-    urlError=[]
+    dico_error={}
     listeTemp=liste_item_musique[:]
     listeTemp.append('requete basique')
+    #ON range le dictionnaire par nom d'item 
+    #on a deux clés la première c'est le nom de la requète : REquète basique ( sans ajout d'item de la liste_item_basique) , Album, cover, partition....
+    #la seconde clé c'est L'url qu'on aura trouvé via le parsage du Json 
+    #et la value ce sera le text 
+    #pour les Url à pb on va les save dans un dico_error et qu'on va refaire tourner plus tard 
     for item in listeTemp:
         dico_query[item]={}
+        dico_error[item]={}
         for index in range (len(urlGoogleApiList)):
             jsonFile = recupJsonText(urlGoogleApiList[index])
             listTempUrl = recupUrlText(jsonFile)
             for indexUrl in range (len(listTempUrl)):
                 urlTemp = listTempUrl[indexUrl]
-                textTemp = recupHtmlText(urlTemp)[1]
-                # try : 
-                #     print( "SUJET : " , item)
-                #     
-                # except KeyError :
-                #     print("On a ete deco du serv rip")
-                #     print("Url qui pose problème : ",urlTemp)
-                    # urlError.append(urlTemp)
+                
+                try : 
+                    print( "SUJET : " , item)
+                    textTemp = recupHtmlText(urlTemp)[1]
+                except KeyError :
+                    print("On a ete deco du serv rip")
+                    print("Url qui pose problème : ",urlTemp)
+                    dico_error[item][urlTemp]="Error"
+                    
                 dico_query[item][urlTemp]=textTemp
     return dico_query
             
