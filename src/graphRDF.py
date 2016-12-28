@@ -227,8 +227,6 @@ def createUrl(parametres):
     return Url
     
 def recupJsonText(Url):
-    # headers = { 'User-Agent': 'Mozilla/5.0 (Windows NT 6.0; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0' }
-    # page = requests.get(Url,headers= headers)
     page = requests.get(Url)
     jsonFile= json.loads(page.content.decode("utf-8"))
     return jsonFile
@@ -246,18 +244,22 @@ def recupUrlText(jsonFile):
         
 
 def recupHtmlText(Url):
+    
     AlchemyObject = AlchemyAPI()
     response = AlchemyObject.text('url', Url)
-    return response,response["text"]
+    text= response["text"]
+    if len(text.split(" ")) > 150 :
+        text=text[:150]
+    print("URL TRAITEE : ", Url)
+    return response,text
     
     
 def routineQuery(requete):
     
-    liste_item_musique  = ["album","cover","partition","tablature","Unplugged","single","live","Acoustic"]
+    liste_item_musique  = ["album","cover","partition"]#,"tablature","Unplugged","single","live","Acoustic"]
     
     urlGoogleApiList= []
     urlGoogleApiList.append(createUrl(requete))
-    
     #On regarde si les éléments du dico sont dans la requète
     for item in liste_item_musique:
         if item not in requete:
@@ -267,6 +269,7 @@ def routineQuery(requete):
             
     dico_query={}
     dico_temp={}
+    urlError=[]
     listeTemp=liste_item_musique[:]
     listeTemp.append('requete basique')
     for item in listeTemp:
@@ -277,6 +280,13 @@ def routineQuery(requete):
             for indexUrl in range (len(listTempUrl)):
                 urlTemp = listTempUrl[indexUrl]
                 textTemp = recupHtmlText(urlTemp)[1]
+                # try : 
+                #     print( "SUJET : " , item)
+                #     
+                # except KeyError :
+                #     print("On a ete deco du serv rip")
+                #     print("Url qui pose problème : ",urlTemp)
+                    # urlError.append(urlTemp)
                 dico_query[item][urlTemp]=textTemp
     return dico_query
             
