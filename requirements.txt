@@ -3,3 +3,5 @@ rdflib
 pyspotlight
 musicbrainzngs
 Django
+AlchemyAPI 
+lxml
