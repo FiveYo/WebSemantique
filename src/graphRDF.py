@@ -7,7 +7,7 @@ from lxml import html
 import requests
 import json
 import re
-
+import time
 
 
 
@@ -239,18 +239,22 @@ def recupJsonText(Url):
     jsonFile= json.loads(page.content.decode("utf-8"))
     return jsonFile
 
-def dataView (jsonFile):
+def recupUrlDataVIew (jsonFile):
     #TODO
     #Recupere les donnes clés (artiste ....) 
+    
     return 0 
     
 def recupUrlText(jsonFile):
     #Recupere l'Url via le code Json
     listeUrl=[]
+    listeText = []
     DictItem = jsonFile["items"]
     for itemsIndex in range (len(DictItem)):
         listeUrl.append(DictItem[itemsIndex]["link"])
-    return(listeUrl)
+        listeText.append(DictItem[itemsIndex]["snippet"])
+        
+    return(listeUrl,listeText)
         
 
 def recupHtmlText(Url):
@@ -260,14 +264,13 @@ def recupHtmlText(Url):
     text= response["text"]
     if len(text.split(" ")) > 150 :
         text=text[:150]
-    print("URL TRAITEE : ", Url)
     return response,text
     
     
 def routineQuery(requete):
     
     liste_item_musique  = ["album","cover","partition"]#,"tablature","Unplugged","single","live","Acoustic"]
-    
+    st = time.time()
     urlGoogleApiList= []
     urlGoogleApiList.append(createUrl(requete))
     #On regarde si les éléments du dico sont dans la requète
@@ -279,6 +282,7 @@ def routineQuery(requete):
             
     dico_query={}
     dico_error={}
+    dico_view={}
     listeTemp=liste_item_musique[:]
     listeTemp.append('requete basique')
     #ON range le dictionnaire par nom d'item 
@@ -289,22 +293,31 @@ def routineQuery(requete):
     for item in listeTemp:
         dico_query[item]={}
         dico_error[item]={}
+        dico_view[item]={}
         for index in range (len(urlGoogleApiList)):
             jsonFile = recupJsonText(urlGoogleApiList[index])
-            listTempUrl = recupUrlText(jsonFile)
+            listTempUrl,listTempText = recupUrlText(jsonFile)
             for indexUrl in range (len(listTempUrl)):
                 urlTemp = listTempUrl[indexUrl]
+                txtTemp = listTempText[indexUrl]
                 
                 try : 
-                    print( "SUJET : " , item)
                     textTemp = recupHtmlText(urlTemp)[1]
                 except KeyError :
                     print("On a ete deco du serv rip")
                     print("Url qui pose problème : ",urlTemp)
-                    dico_error[item][urlTemp]="Error"
+                    print("On tente de la relancer ....")
+                    try : 
+                        textTemp = recupHtmlText(urlTemp)[1]
+                    except  KeyError : 
+                        print("Nouevlle Erreur ") 
+                        dico_error[item][urlTemp]="Error"
+                    print("Url OK ")
                     
+                dico_view[item][urlTemp]=txtTemp
                 dico_query[item][urlTemp]=textTemp
-    return dico_query
+    print("CA A PRIS : " ,(time.time()-st))
+    return dico_query,dico_view
             
         
         

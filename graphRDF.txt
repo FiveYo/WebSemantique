@@ -1,0 +1,14 @@
+On a 3 parties :
+1.) Partie de Justin que j'ai aps touché 
+2.) Partie de Milly 
+-> Creation matrice similarite 
+-> Fonction de regroupement de graphe avec critère et précision 
+3.)Partie de Sam 
+-> Genere la requète googleAPi 
+-> recup le Json 
+-> Recup URL + TEXT DE DESCRIPTION POUR LA VUE
+-> Recup URL + TEXT DU SITE ( VIA ALCHEMY ) POUR MATHIEU 
+-> renvoie DEUX DICO : Un pour la vue [nomrequete][url][description]
+			un autre pour mathieur [nom requete][url][textdusite(via alchemyAPI)
+
+Pour Utiliser faire routineQuery("cequetuveuxchercher"))
