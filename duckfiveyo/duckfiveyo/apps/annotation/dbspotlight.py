@@ -1,6 +1,33 @@
+#-*- coding:utf-8 -*-
+#
+# Utilisation :
+# -------------
+# import dbspotlight
+# data = [(url1, text1), (url2, text2), ...]
+# dbspotlight.main(data)
+#
+# Exemple :
+# data = [('url1', 'Mozart'), ('url2', 'Muse')]
+# dbspotlight.main(data)
+#
+# Sortie :
+# --------
+# {url1: [(triplet RDF 1), (triplet RDF 2), ...],
+#  url2: [(triplet RDF 1), (triplet RDF 2), ...],
+#  ...
+# }
+#
+# Format d'un triplet
+# -------------------
+# (sujet, prédicat, objet)
+#    -> objet peut être vide (chaine nulle '')
+# Exemple : ('Muse', 'type', 'Band')
+#           ('Wolfgang_Amadeus_Mozart', 'type', '')
+
 import sys
 
 import musicbrainzngs
+import pprint
 import spotlight
 
 LANG_PORTS = {
@@ -23,19 +50,44 @@ spotlightURL = "http://spotlight.sztaki.hu:{0}/rest/annotate".format(LANG_PORTS[
                                                                      "english"])
 
 
-def musicbrainzInit():
+def musicbrainz(request):
     musicbrainzngs.set_useragent("duckfiveyo", "v0.1")
+    mbz = musicbrainzngs.search_recordings(
+        request, limit=1)
+    return mbz['recording-list']
 
 
-def annotations(request, urls, text):
-    annot = spotlight.annotate(
-        spotlightURL, request, confidence=0.4, support=20, spotter='Default')
-    musicbrainzInit()
-    mbz = musicbrainzngs.search_recordings(request, limit=3)
-    # mbz = [x for x in mbz if x['position'] < 5]
-    annot.append(mbz)
-    return annot
+def annotations(text):
+    try:
+        annot = spotlight.annotate(
+            spotlightURL, text, confidence=0.4, support=20, spotter='Default')
+    except spotlight.SpotlightException:
+        annot = ''
+    triplets = []
+    for elt in annot:
+        # pprint.pprint(elt)
+        subject = elt['URI'][len('http://dbpedia.org/resource/'):]
+        function = 'type'
+        try:
+            objet = elt['types']
+        except KeyError:
+            objet = ''
+        objet = objet.split(',')
+        objet = [x[len('DBpedia:'):]
+                 for x in objet if x.startswith('DBpedia:')]
+        for o in objet:
+            triplets.append((subject, function, o))
+    return triplets
+
+
+def main(data):
+    output = {}
+    for d in data:
+        url = d[0]
+        text = d[1]
+        output[url] = annotations(text)
+    return output
 
 if __name__ == "__main__":
-    text = sys.argv[1]
-    print(annotations("", "", text))
+    print("Veuillez importer le fichier comme un module et appeler"
+          "la fonction main sur le jeu de données à annoter")
