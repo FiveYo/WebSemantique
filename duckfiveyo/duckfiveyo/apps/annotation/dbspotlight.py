@@ -84,7 +84,6 @@ def annotations(text):
 
 
 def main(data):
-    data = data[0]
     output = {}
     for key, value in data.items():
         print(key)
