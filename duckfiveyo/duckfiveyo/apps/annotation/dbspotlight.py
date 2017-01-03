@@ -29,6 +29,7 @@ import sys
 import musicbrainzngs
 import pprint
 import spotlight
+import requests
 
 LANG_PORTS = {
     "english": '2222',
@@ -63,9 +64,10 @@ def annotations(text):
             spotlightURL, text, confidence=0.4, support=20, spotter='Default')
     except spotlight.SpotlightException:
         annot = ''
+    except requests.exceptions.HTTPError:
+        annot = ''
     triplets = []
     for elt in annot:
-        # pprint.pprint(elt)
         subject = elt['URI'][len('http://dbpedia.org/resource/'):]
         function = 'type'
         try:
@@ -83,6 +85,7 @@ def annotations(text):
 def main(data):
     output = {}
     for key, value in data.items():
+        print(key)
         url = key
         text = value
         output[url] = annotations(text)
