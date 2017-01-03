@@ -26,10 +26,12 @@
 
 import sys
 
-#import musicbrainzngs
+# import musicbrainzngs
 import pprint
 import spotlight
 import requests
+
+from SPARQLWrapper import SPARQLWrapper, JSON
 
 LANG_PORTS = {
     "english": '2222',
@@ -49,13 +51,13 @@ spotlightURL = "http://spotlight.dbpedia.org:{0}/rest/annotate".format(LANG_PORT
 spotlightURL = "http://spotlight.dbpedia.org/rest/annotate"
 spotlightURL = "http://spotlight.sztaki.hu:{0}/rest/annotate".format(LANG_PORTS[
                                                                      "english"])
+sparql = SPARQLWrapper("http://dbpedia.org/sparql")
 
-
-def musicbrainz(request):
-    musicbrainzngs.set_useragent("duckfiveyo", "v0.1")
-    mbz = musicbrainzngs.search_recordings(
-        request, limit=1)
-    return mbz['recording-list']
+# def musicbrainz(request):
+#    musicbrainzngs.set_useragent("duckfiveyo", "v0.1")
+#    mbz = musicbrainzngs.search_recordings(
+#        request, limit=1)
+#    return mbz['recording-list']
 
 
 def annotations(text):
@@ -67,7 +69,7 @@ def annotations(text):
     except requests.exceptions.HTTPError:
         annot = ''
     triplets = []
-    # print(annot)
+    print(annot)
     for elt in annot:
         subject = elt['URI'][len('http://dbpedia.org/resource/'):]
         function = 'type'
@@ -83,13 +85,52 @@ def annotations(text):
     return triplets
 
 
+def annotations2(text):
+    try:
+        annot = spotlight.annotate(
+            spotlightURL, text, confidence=0.4, support=20, spotter='Default')
+    except spotlight.SpotlightException:
+        annot = ''
+    except requests.exceptions.HTTPError:
+        annot = ''
+    triplets = []
+    for elt in annot:
+        sparql.setQuery("""
+                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+                        PREFIX owl: <http://www.w3.org/2002/07/owl#>
+                        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+                        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                        PREFIX dc: <http://purl.org/dc/elements/1.1/>
+                        PREFIX : <http://dbpedia.org/resource/>
+                        PREFIX dbpedia2: <http://dbpedia.org/property/>
+                        PREFIX dbpedia: <http://dbpedia.org/>
+                        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+                        describe <%s>
+                        """ % elt['URI'])
+        sparql.setReturnFormat(JSON)
+        results = sparql.query().convert()
+
+        for result in results["results"]["bindings"]:
+            resultValide = True
+            for key, val in result.items():
+                if "lang" in val.keys() and val['lang'] != 'en':
+                    resultValide = False
+            if resultValide:
+                triplets.append(result)
+
+    return triplets
+
+
 def main(data):
     output = {}
     for key, value in data.items():
         print(key)
         url = key
         text = value
-        output[url] = annotations(text)
+        output[url] = annotations2(text)
     return output
 
 if __name__ == "__main__":
