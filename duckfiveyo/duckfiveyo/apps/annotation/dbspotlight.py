@@ -82,9 +82,9 @@ def annotations(text):
 
 def main(data):
     output = {}
-    for d in data:
-        url = d[0]
-        text = d[1]
+    for key, value in data.items():
+        url = key
+        text = value
         output[url] = annotations(text)
     return output
 
