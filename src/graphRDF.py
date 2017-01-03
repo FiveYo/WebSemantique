@@ -175,19 +175,20 @@ def createMatriceSimPredicat(PrevMatrice,PrevListItem,itemNewGraph):
     return(listeItem,matrice)
 
 
-def  searchByCritere(resultSim,critere,precision):
+def  searchByCritere(resultSim,parametreQuery,precision):
     #IMPORTANT : Le paramètre matrice est [SVO, Matrice]
+    #IMPORTANT : la précision est un pourcentage
     #renvoie une matrice dont on a rogner les colones et on a pris seulement celles en rapport avec le critère
     SVOItem = resultSim[0]
     matriceSim = resultSim[1]
     listeIndex=[]
      #On cherche les index des colonnes qui ont les SVO qui correspondent au critère
     for indexItem in range(len(SVOItem)):
-        coefTemp = SequenceMatcher(None,critere,SVOItem[indexItem]).ratio()
+        coefTemp = SequenceMatcher(None,parametreQuery,SVOItem[indexItem]).ratio()
         if coefTemp>=precision:
             listeIndex.append(indexItem)
     #On créé une nouvelle matrice (Item,graphe) 
-    #La matrice critere sera aura les même ordonnées ( tous les graphes ) 
+    #La matrice aura les même ordonnées ( tous les graphes ) 
     #mais en abscisse il y aura les SVO qui correspondent aux critères
     matriceCritere = np.zeros((matriceSim.shape[0],len(listeIndex)))
     for i in range(len(listeIndex)):
@@ -195,8 +196,9 @@ def  searchByCritere(resultSim,critere,precision):
         matriceCritere[:,[i]]=matriceSim[:,[listeIndex[i]]]
     return matriceCritere
     
-def grouperGraphes(matrice,pourcentage):
-    #matrice triée via searchByCritere
+def grouperGraphes(matrice,precision):
+    #IMPORTANT : la précision est un pourcentage 
+    #IMPORTANT : doit être utilisé après avoir trié la matrice via searchByCritere
     listeGraphe=[]
     NbItem = matrice.shape[1]
     NbGraph = matrice.shape[0]
@@ -209,7 +211,27 @@ def grouperGraphes(matrice,pourcentage):
 def percentage(part, whole):
   return 100 * float(part)/float(whole)
     
-     
+    
+def routineMatrice(listeGraphe,parametreQuery,precision):
+    initMatrice,Inititems = initMatriceSim(listeGraphe|[0],getSVO(listeGraphe[0]))
+    matricePrevTemp = initMatrice
+    itemsPrevTemp = initItems
+    #Creation matrice similarité avec tout les graphes 
+    for indexMatrice in range (1,len(listeGraphe)):
+        itemSuivTemp = getSVO(listeGraphe[indexMatrice])
+        itemsPrevTemp,matricePrevTemp = createMatriceSimPredicat(matricePrevTemp,itemsPrevTemp,itemSuivTemp)
+    #Regroupement par rapport au critère(parametreQuery) et à la précision 
+    result = [itemsPrevTemp,matricePrevTemp] 
+    matriceCritere = searchByCritere(result,parametreQuery,precision)
+    #QUEL RESULTAT JE DOIS AVOIR ?
+    listeGraphe = grouperGraphes(matriceCritere,precision)
+    
+    
+    
+    
+    
+    
+    
 # graphe1=graphRDF("http://www.azlyrics.com/lyrics/joeybada/waves.html")
 # graphe2=graphRDF("http://www.lyricsmania.com/waves_lyrics_joey_badass.html")
 # SVO1=getSVO(graphe1[0])
@@ -291,9 +313,6 @@ def routineQuery(requete):
     #et la value ce sera le text 
     #pour les Url à pb on va les save dans un dico_error et qu'on va refaire tourner plus tard 
     for item in listeTemp:
-        dico_query[item]={}
-        dico_error[item]={}
-        dico_view[item]={}
         for index in range (len(urlGoogleApiList)):
             jsonFile = recupJsonText(urlGoogleApiList[index])
             listTempUrl,listTempText = recupUrlText(jsonFile)
@@ -310,12 +329,12 @@ def routineQuery(requete):
                     try : 
                         textTemp = recupHtmlText(urlTemp)[1]
                     except  KeyError : 
-                        print("Nouevlle Erreur ") 
+                        print("Nouvelle Erreur WTF ") 
                         dico_error[item][urlTemp]="Error"
                     print("Url OK ")
                     
-                dico_view[item][urlTemp]=txtTemp
-                dico_query[item][urlTemp]=textTemp
+                dico_view[urlTemp]=txtTemp
+                dico_query[urlTemp]=textTemp
     print("CA A PRIS : " ,(time.time()-st))
     return dico_query,dico_view
             
