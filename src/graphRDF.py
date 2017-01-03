@@ -214,7 +214,7 @@ def percentage(part, whole):
     
     
 def routineMatrice(dictGraphe,parametreQueryList,precision):
-    listeGraphe=dictGraphe.keys()
+    listeGraphe=dictGraphe.values()
     initMatrice,Inititems = initMatriceSim(listeGraphe|[0],getSVO(listeGraphe[0]))
     matricePrevTemp = initMatrice
     itemsPrevTemp = initItems
@@ -225,14 +225,20 @@ def routineMatrice(dictGraphe,parametreQueryList,precision):
     #Regroupement par rapport au critère(parametreQuery) et à la précision 
     result = [itemsPrevTemp,matricePrevTemp]
     #QUEL RESULTAT JE DOIS AVOIR ?
-    listMatrice =[]
-    listListGraph=[]
-    for itemQuery in paramatereQuery :
-        listMatrice.append(searchByCritere(result,itemQuery,precision))
-        listeGraphe.append(grouperGraphes(matriceCritere,precision))
-    return listMatrice,listListGraph
-    
-    
+    dictMatrice = {}
+    for itemQuery in parametreQueryList :
+        matriceCritere = searchByCritere(result,itemQuery,precision)
+        listeTemp=grouperGraphes(matriceCritere,precision)
+        for items in range(len(listeTemp)):
+            dictMatrice[itemQuery]=foundKeybyValue(dictGraphe,item)
+    return dictMatrice
+
+
+def foundKeybyValue(dict,value):
+    for key,values in dict.items():
+        if values == value:
+            return key
+        
 
 # graphe1=graphRDF("http://www.azlyrics.com/lyrics/joeybada/waves.html")
 # graphe2=graphRDF("http://www.lyricsmania.com/waves_lyrics_joey_badass.html")
