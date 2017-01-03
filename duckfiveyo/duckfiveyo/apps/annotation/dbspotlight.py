@@ -26,7 +26,7 @@
 
 import sys
 
-import musicbrainzngs
+#import musicbrainzngs
 import pprint
 import spotlight
 import requests
@@ -67,6 +67,7 @@ def annotations(text):
     except requests.exceptions.HTTPError:
         annot = ''
     triplets = []
+    print(annot)
     for elt in annot:
         subject = elt['URI'][len('http://dbpedia.org/resource/'):]
         function = 'type'
