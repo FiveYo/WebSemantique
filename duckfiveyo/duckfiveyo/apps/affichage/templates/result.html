@@ -18,9 +18,10 @@
     <!--Web / Image / ...-->
     <div class="row">
         <ul class="tabs">
-            <li class="tab col s3"><a class="active" href="#web">Web</a></li>
-            <li class="tab col s3"><a href="#images">Image</a></li>
-            <li class="tab col s3"><a href="#videos">Cover</a></li>
+            <li class="tab col s3"><a class="active" href="#web">Pertinence</a></li>
+            <li class="tab col s3"><a href="#album">Album</a></li>
+            <li class="tab col s3"><a href="#cover">Cover</a></li>
+            <li class="tab col s3"><a href="#partition">Partition</a></li>
         </ul>
     </div>
     <div class="row">
@@ -28,17 +29,22 @@
             <div id="web" class="row">
                 <!--Tout (Web)-->
                 <div class="col s12">
-                    {{ liste }}
+                    {{ web }}
                 </div>
             </div>
-            <div id="images" class="row">
+            <div id="album" class="row">
                 <div class="col s12">
-                    Parti image
+                    {{ album }}
                 </div>
             </div>
-            <div id="videos" class="row">
+            <div id="cover" class="row">
                 <div class="col s12">
-                    Parti Cover
+                    {{ cover }}
+                </div>
+            </div>
+            <div id="partition" class="row">
+                <div class="col s12">
+                    {{ partition }}
                 </div>
             </div>
         </div>
