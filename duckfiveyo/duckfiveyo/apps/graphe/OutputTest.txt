@@ -1,0 +1,102 @@
+@prefix ns1: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix ns10: <http://creativecommons.org/ns#> .
+@prefix ns11: <http://purl.org/dc/terms/> .
+@prefix ns12: <http://www.w3.org/ns/solid/terms#> .
+@prefix ns2: <http://xmlns.com/foaf/0.1/> .
+@prefix ns3: <http://www.w3.org/ns/auth/cert#> .
+@prefix ns4: <http://www.w3.org/ns/pim/space#> .
+@prefix ns5: <http://rdfs.org/sioc/ns#> .
+@prefix ns6: <http://www.w3.org/2000/10/swap/pim/contact#> .
+@prefix ns7: <http://usefulinc.com/ns/doap#> .
+@prefix ns8: <http://www.w3.org/ns/ldp#> .
+@prefix ns9: <http://purl.org/dc/elements/1.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://dig.csail.mit.edu/2005/ajar/ajaw/data#Tabulator> ns7:developer <https://www.w3.org/People/Berners-Lee/card#i> .
+
+<http://dig.csail.mit.edu/2007/01/camp/data#course> ns2:maker <https://www.w3.org/People/Berners-Lee/card#i> .
+
+<http://dig.csail.mit.edu/data#DIG> ns2:member <https://www.w3.org/People/Berners-Lee/card#i> .
+
+<http://wiki.ontoworld.org/index.php/_IRW2006> ns9:title "Identity, Reference and the Web workshop 2006" ;
+    ns6:participant <https://www.w3.org/People/Berners-Lee/card#i> .
+
+<http://www.ecs.soton.ac.uk/~dt2/dlstuff/www2006_data#panel-panelk01> rdfs:label "The Next Wave of the Web (Plenary Panel)" ;
+    ns6:participant <https://www.w3.org/People/Berners-Lee/card#i> .
+
+<http://www.w3.org/2000/10/swap/data#Cwm> ns7:developer <https://www.w3.org/People/Berners-Lee/card#i> .
+
+<http://www.w3.org/2011/Talks/0331-hyderabad-tbl/data#talk> ns11:title "Designing the Web for an Open Society" ;
+    ns2:maker <https://www.w3.org/People/Berners-Lee/card#i> .
+
+<http://www.w3.org/DesignIssues/Overview.html> ns9:title "Design Issues for the World Wide Web" ;
+    ns2:maker <https://www.w3.org/People/Berners-Lee/card#i> .
+
+<http://www.w3.org/People/Berners-Lee/card> a ns2:PersonalProfileDocument ;
+    ns10:license <http://creativecommons.org/licenses/by-nc/3.0/> ;
+    ns9:title "Tim Berners-Lee's FOAF file" ;
+    ns2:maker <https://www.w3.org/People/Berners-Lee/card#i> ;
+    ns2:primaryTopic <https://www.w3.org/People/Berners-Lee/card#i> .
+
+<http://www.w3.org/People/Berners-Lee/card#i> = <https://www.w3.org/People/Berners-Lee/card#i> ;
+    ns3:key [ a ns3:RSAPublicKey ;
+            ns3:exponent 65537 ;
+            ns3:modulus "ebe99c737bd3670239600547e5e2eb1d1497da39947b6576c3c44ffeca32cf0f2f7cbee3c47001278a90fc7fc5bcf292f741eb1fcd6bbe7f90650afb519cf13e81b2bffc6e02063ee5a55781d420b1dfaf61c15758480e66d47fb0dcb5fa7b9f7f1052e5ccbd01beee9553c3b6b51f4daf1fce991294cd09a3d1d636bc6c7656e4455d0aff06daec740ed0084aa6866fcae1359de61cc12dbe37c8fa42e977c6e727a8258bb9a3f265b27e3766fe0697f6aa0bcc81c3f026e387bd7bbc81580dc1853af2daa099186a9f59da526474ef6ec0a3d84cf400be3261b6b649dea1f78184862d34d685d2d587f09acc14cd8e578fdd2283387821296f0af39b8d8845"^^xsd:hexBinary ] .
+
+<http://www.w3.org/data#W3C> ns2:member <https://www.w3.org/People/Berners-Lee/card#i> .
+
+<http://dig.csail.mit.edu/breadcrumbs/blog/4> ns9:title "timbl's blog on DIG" ;
+    rdfs:seeAlso <http://dig.csail.mit.edu/breadcrumbs/blog/feed/4> ;
+    ns2:maker <https://www.w3.org/People/Berners-Lee/card#i> .
+
+<https://timbl.com/timbl/Public/friends.ttl> a ns2:PersonalProfileDocument ;
+    ns10:license <http://creativecommons.org/licenses/by-nc/3.0/> ;
+    ns9:title "Tim Berners-Lee's editable FOAF file" ;
+    ns2:maker <https://www.w3.org/People/Berners-Lee/card#i> ;
+    ns2:primaryTopic <https://www.w3.org/People/Berners-Lee/card#i> .
+
+<https://www.w3.org/People/Berners-Lee/card#i> a ns6:Male,
+        ns2:Person ;
+    rdfs:label "Tim Berners-Lee" ;
+    ns5:avatar <http://www.w3.org/People/Berners-Lee/images/timbl-image-by-Coz-cropped.jpg> ;
+    rdfs:seeAlso <https://timbl.com/timbl/Public/friends.ttl> ;
+    ns6:assistant <https://www.w3.org/People/Berners-Lee/card#amy> ;
+    ns6:homePage <http://www.w3.org/People/Berners-Lee/> ;
+    ns6:office [ ns6:address [ ns6:city "Cambridge" ;
+                    ns6:country "USA" ;
+                    ns6:postalCode "02139" ;
+                    ns6:street "32 Vassar Street" ;
+                    ns6:street2 "MIT CSAIL Room 32-G524" ] ;
+            ns6:phone <tel:+1-617-253-5702> ;
+            ns1:location [ ns1:lat "42.361860" ;
+                    ns1:long "-71.091840" ] ] ;
+    ns6:preferredURI "https://www.w3.org/People/Berners-Lee/card#i" ;
+    ns6:publicHomePage <http://www.w3.org/People/Berners-Lee/> ;
+    = <http://www.advogato.org/person/timbl/foaf.rdf#me> ;
+    ns8:inbox <https://timbl.com/timbl/Public/Inbox> ;
+    ns4:preferencesFile <https://timbl.com/timbl/Data/preferences.n3> ;
+    ns4:storage <https://timbl.databox.me/> ;
+    ns12:publicTypeIndex <https://timbl.com/timbl/Public/PublicTypeIndex.ttl> ;
+    ns2:account <http://en.wikipedia.org/wiki/User:Timbl>,
+        <http://twitter.com/timberners_lee>,
+        <http://www.reddit.com/user/timbl/> ;
+    ns2:based_near [ ns1:lat "42.361860" ;
+            ns1:long "-71.091840" ] ;
+    ns2:family_name "Berners-Lee" ;
+    ns2:givenname "Timothy" ;
+    ns2:homepage <https://www.w3.org/People/Berners-Lee/> ;
+    ns2:img <https://www.w3.org/Press/Stock/Berners-Lee/2001-europaeum-eighth.jpg> ;
+    ns2:mbox <mailto:timbl@w3.org> ;
+    ns2:mbox_sha1sum "965c47c5a70db7407210cef6e4e6f5374a525c5c" ;
+    ns2:name "Timothy Berners-Lee" ;
+    ns2:nick "TimBL",
+        "timbl" ;
+    ns2:openid <https://www.w3.org/People/Berners-Lee/> ;
+    ns2:phone <tel:+1-(617)-253-5702> ;
+    ns2:title "Sir" ;
+    ns2:weblog <http://dig.csail.mit.edu/breadcrumbs/blog/4> ;
+    ns2:workplaceHomepage <https://www.w3.org/> .
+
