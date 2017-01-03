@@ -127,7 +127,7 @@ def annotations2(text):
 def main(data):
     output = {}
     for key, value in data.items():
-        print(key)
+        # print(key)
         url = key
         text = value
         output[url] = annotations2(text)

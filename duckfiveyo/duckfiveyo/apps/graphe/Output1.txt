@@ -1,103 +1,134 @@
-@prefix : <http://xmlns.com/foaf/0.1/> .
 @prefix cc: <http://creativecommons.org/ns#> .
-@prefix cert: <http://www.w3.org/ns/auth/cert#> .
-@prefix con: <http://www.w3.org/2000/10/swap/pim/contact#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix dct: <http://purl.org/dc/terms/> .
-@prefix doap: <http://usefulinc.com/ns/doap#> .
-@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
-@prefix ldp: <http://www.w3.org/ns/ldp#> .
+@prefix ctag: <http://commontag.org/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix dc11: <http://purl.org/dc/elements/1.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix gr: <http://purl.org/goodrelations/v1#> .
+@prefix grddl: <http://www.w3.org/2003/g/data-view#> .
+@prefix hcalendar: <http://microformats.org/profile/hcalendar#> .
+@prefix hcard: <http://microformats.org/profile/hcard#> .
+@prefix ical: <http://www.w3.org/2002/12/cal/icaltzd#> .
+@prefix ma: <http://www.w3.org/ns/ma-ont#> .
+@prefix md: <http://www.w3.org/ns/md#> .
+@prefix ns1: <http://ogp.me/ns#video:> .
+@prefix ns2: <al:ios:> .
+@prefix ns3: <al:android:> .
+@prefix ns4: <fb:> .
+@prefix ns5: <al:web:> .
+@prefix og: <http://ogp.me/ns#> .
+@prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rev: <http://purl.org/stuff/rev#> .
+@prefix rif: <http://www.w3.org/2007/rif#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix schema: <http://schema.org/> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 @prefix sioc: <http://rdfs.org/sioc/ns#> .
-@prefix solid: <https://www.w3.org/ns/solid/terms#> .
-@prefix space: <http://www.w3.org/ns/pim/space#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix v: <http://rdf.data-vocabulary.org/#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix wdr: <http://www.w3.org/2007/05/powder#> .
+@prefix wdrs: <http://www.w3.org/2007/05/powder-s#> .
+@prefix xhv: <http://www.w3.org/1999/xhtml/vocab#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://dig.csail.mit.edu/2005/ajar/ajaw/data#Tabulator> doap:developer <https://www.w3.org/People/Berners-Lee/card#i> .
+<https://www.youtube.com/watch?v=NQfblrVa9Q4#a11y-announcements-container> xhv:role xhv:alert .
 
-<http://dig.csail.mit.edu/2007/01/camp/data#course> :maker <https://www.w3.org/People/Berners-Lee/card#i> .
+<https://www.youtube.com/watch?v=NQfblrVa9Q4#action-panel-overflow-button> xhv:role xhv:button .
 
-<http://dig.csail.mit.edu/data#DIG> :member <https://www.w3.org/People/Berners-Lee/card#i> .
+<https://www.youtube.com/watch?v=NQfblrVa9Q4#content> xhv:role xhv:main .
 
-<http://wiki.ontoworld.org/index.php/_IRW2006> dc:title "Identity, Reference and the Web workshop 2006" ;
-    con:participant <https://www.w3.org/People/Berners-Lee/card#i> .
+<https://www.youtube.com/watch?v=NQfblrVa9Q4#player> xhv:role xhv:complementary .
 
-<http://www.ecs.soton.ac.uk/~dt2/dlstuff/www2006_data#panel-panelk01> rdfs:label "The Next Wave of the Web (Plenary Panel)" ;
-    con:participant <https://www.w3.org/People/Berners-Lee/card#i> .
+<https://www.youtube.com/watch?v=NQfblrVa9Q4> ns3:app_name "YouTube"@fr ;
+    ns3:package "com.google.android.youtube"@fr ;
+    ns3:url "vnd.youtube://www.youtube.com/watch?v=NQfblrVa9Q4&feature=applinks"@fr ;
+    ns2:app_name "YouTube"@fr ;
+    ns2:app_store_id "544007664"@fr ;
+    ns2:url "vnd.youtube://www.youtube.com/watch?v=NQfblrVa9Q4&feature=applinks"@fr ;
+    ns5:url "https://www.youtube.com/watch?v=NQfblrVa9Q4&feature=applinks"@fr ;
+    ns4:app_id "87741124305"@fr ;
+    og:description "Man Down cover"@fr ;
+    og:image "https://i.ytimg.com/vi/NQfblrVa9Q4/maxresdefault.jpg"@fr ;
+    og:site_name "YouTube"@fr ;
+    og:title "Rihanna: Man Down"@fr ;
+    og:type "video"@fr ;
+    og:url "https://www.youtube.com/watch?v=NQfblrVa9Q4"@fr ;
+    ns1:height "720"@fr ;
+    ns1:secure_url "https://www.youtube.com/embed/NQfblrVa9Q4"@fr,
+        "https://www.youtube.com/v/NQfblrVa9Q4?version=3&autohide=1"@fr ;
+    ns1:tag "Man Down (Musical Recording)"@fr,
+        "Music (TV Genre)"@fr,
+        "Reggae (Musical Genre)"@fr,
+        "Rihanna (Musical Artist)"@fr,
+        "iMovie"@fr ;
+    ns1:type "application/x-shockwave-flash"@fr,
+        "text/html"@fr ;
+    ns1:url "http://www.youtube.com/v/NQfblrVa9Q4?version=3&autohide=1"@fr,
+        "https://www.youtube.com/embed/NQfblrVa9Q4"@fr ;
+    ns1:width "1280"@fr ;
+    md:item ( [ a schema:VideoObject ;
+                schema:author [ a schema:Person ;
+                        schema:url <http://www.youtube.com/channel/UCcCMvZ4vmOA3qM2P_nyB21Q> ],
+                    [ a schema:Person ;
+                        schema:url <https://plus.google.com/103678018051985703938> ] ;
+                schema:channelId "UCcCMvZ4vmOA3qM2P_nyB21Q"@fr ;
+                schema:datePublished "2015-04-21"@fr ;
+                schema:description "Man Down cover"@fr ;
+                schema:duration "PT4M24S"@fr ;
+                schema:embedURL <https://www.youtube.com/embed/NQfblrVa9Q4> ;
+                schema:genre "Film & Animation"@fr ;
+                schema:height "720"@fr ;
+                schema:interactionCount "4952131"@fr ;
+                schema:isFamilyFriendly "True"@fr ;
+                schema:name "Rihanna: Man Down"@fr ;
+                schema:paid "False"@fr ;
+                schema:playerType "HTML5 Flash"@fr ;
+                schema:regionsAllowed "AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,SS,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW"@fr ;
+                schema:thumbnail [ a schema:ImageObject ;
+                        schema:height "720"@fr ;
+                        schema:url <https://i.ytimg.com/vi/NQfblrVa9Q4/maxresdefault.jpg> ;
+                        schema:width "1280"@fr ] ;
+                schema:thumbnailUrl <https://i.ytimg.com/vi/NQfblrVa9Q4/maxresdefault.jpg> ;
+                schema:unlisted "False"@fr ;
+                schema:url <https://www.youtube.com/watch?v=NQfblrVa9Q4> ;
+                schema:videoId "NQfblrVa9Q4"@fr ;
+                schema:width "1280"@fr ] ) ;
+    rdfa:usesVocabulary schema: .
 
-<http://www.w3.org/2000/10/swap/data#Cwm> doap:developer <https://www.w3.org/People/Berners-Lee/card#i> .
+[] xhv:role xhv:alert .
 
-<http://www.w3.org/2011/Talks/0331-hyderabad-tbl/data#talk> dct:title "Designing the Web for an Open Society" ;
-    :maker <https://www.w3.org/People/Berners-Lee/card#i> .
+[] xhv:role xhv:dialog .
 
-<http://www.w3.org/DesignIssues/Overview.html> dc:title "Design Issues for the World Wide Web" ;
-    :maker <https://www.w3.org/People/Berners-Lee/card#i> .
+[] xhv:role xhv:menu .
 
-<http://www.w3.org/People/Berners-Lee/card> a :PersonalProfileDocument ;
-    cc:license <http://creativecommons.org/licenses/by-nc/3.0/> ;
-    dc:title "Tim Berners-Lee's FOAF file" ;
-    :maker <https://www.w3.org/People/Berners-Lee/card#i> ;
-    :primaryTopic <https://www.w3.org/People/Berners-Lee/card#i> .
+[] xhv:role xhv:alert .
 
-<http://www.w3.org/People/Berners-Lee/card#i> = <https://www.w3.org/People/Berners-Lee/card#i> ;
-    cert:key [ a cert:RSAPublicKey ;
-            cert:exponent 65537 ;
-            cert:modulus "ebe99c737bd3670239600547e5e2eb1d1497da39947b6576c3c44ffeca32cf0f2f7cbee3c47001278a90fc7fc5bcf292f741eb1fcd6bbe7f90650afb519cf13e81b2bffc6e02063ee5a55781d420b1dfaf61c15758480e66d47fb0dcb5fa7b9f7f1052e5ccbd01beee9553c3b6b51f4daf1fce991294cd09a3d1d636bc6c7656e4455d0aff06daec740ed0084aa6866fcae1359de61cc12dbe37c8fa42e977c6e727a8258bb9a3f265b27e3766fe0697f6aa0bcc81c3f026e387bd7bbc81580dc1853af2daa099186a9f59da526474ef6ec0a3d84cf400be3261b6b649dea1f78184862d34d685d2d587f09acc14cd8e578fdd2283387821296f0af39b8d8845"^^xsd:hexBinary ] .
+[] xhv:role xhv:menuitem .
 
-<http://www.w3.org/data#W3C> :member <https://www.w3.org/People/Berners-Lee/card#i> .
+[] xhv:role xhv:dialog .
 
-<http://dig.csail.mit.edu/breadcrumbs/blog/4> dc:title "timbl's blog on DIG" ;
-    rdfs:seeAlso <http://dig.csail.mit.edu/breadcrumbs/blog/feed/4> ;
-    :maker <https://www.w3.org/People/Berners-Lee/card#i> .
+[] xhv:role xhv:menu .
 
-<https://timbl.com/timbl/Public/friends.ttl> a :PersonalProfileDocument ;
-    cc:license <http://creativecommons.org/licenses/by-nc/3.0/> ;
-    dc:title "Tim Berners-Lee's editable FOAF file" ;
-    :maker <https://www.w3.org/People/Berners-Lee/card#i> ;
-    :primaryTopic <https://www.w3.org/People/Berners-Lee/card#i> .
+[] xhv:role xhv:menuitem .
 
-<https://www.w3.org/People/Berners-Lee/card#i> a con:Male,
-        :Person ;
-    rdfs:label "Tim Berners-Lee" ;
-    sioc:avatar <http://www.w3.org/People/Berners-Lee/images/timbl-image-by-Coz-cropped.jpg> ;
-    rdfs:seeAlso <https://timbl.com/timbl/Public/friends.ttl> ;
-    con:assistant <https://www.w3.org/People/Berners-Lee/card#amy> ;
-    con:homePage <http://www.w3.org/People/Berners-Lee/> ;
-    con:office [ con:address [ con:city "Cambridge" ;
-                    con:country "USA" ;
-                    con:postalCode "02139" ;
-                    con:street "32 Vassar Street" ;
-                    con:street2 "MIT CSAIL Room 32-G524" ] ;
-            con:phone <tel:+1-617-253-5702> ;
-            geo:location [ geo:lat "42.361860" ;
-                    geo:long "-71.091840" ] ] ;
-    con:preferredURI "https://www.w3.org/People/Berners-Lee/card#i" ;
-    con:publicHomePage <http://www.w3.org/People/Berners-Lee/> ;
-    = <http://www.advogato.org/person/timbl/foaf.rdf#me> ;
-    ldp:inbox <https://timbl.com/timbl/Public/Inbox> ;
-    space:preferencesFile <https://timbl.com/timbl/Data/preferences.n3> ;
-    space:storage <https://timbl.databox.me/> ;
-    :account <http://en.wikipedia.org/wiki/User:Timbl>,
-        <http://twitter.com/timberners_lee>,
-        <http://www.reddit.com/user/timbl/> ;
-    :based_near [ geo:lat "42.361860" ;
-            geo:long "-71.091840" ] ;
-    :family_name "Berners-Lee" ;
-    :givenname "Timothy" ;
-    :homepage <https://www.w3.org/People/Berners-Lee/> ;
-    :img <https://www.w3.org/Press/Stock/Berners-Lee/2001-europaeum-eighth.jpg> ;
-    :mbox <mailto:timbl@w3.org> ;
-    :mbox_sha1sum "965c47c5a70db7407210cef6e4e6f5374a525c5c" ;
-    :name "Timothy Berners-Lee" ;
-    :nick "TimBL",
-        "timbl" ;
-    :openid <https://www.w3.org/People/Berners-Lee/> ;
-    :phone <tel:+1-(617)-253-5702> ;
-    :title "Sir" ;
-    :weblog <http://dig.csail.mit.edu/breadcrumbs/blog/4> ;
-    :workplaceHomepage <https://www.w3.org/> ;
-    solid:publicTypeIndex <https://timbl.com/timbl/Public/PublicTypeIndex.ttl> .
+[] xhv:role xhv:link .
+
+[] xhv:role xhv:alert .
+
+[] xhv:role xhv:alert .
+
+[] xhv:role xhv:dialog .
+
+[] xhv:role xhv:menuitem .
 

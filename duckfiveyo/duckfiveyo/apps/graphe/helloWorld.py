@@ -1,16 +1,19 @@
 import rdflib
-
+#On récupère du json de mathieu, qui contiendra plusieurs adresses url.  
+#On génère un graph pour chaque adresse url.
+#Pour chaque graph on fait l'intersection avec GraphGeneral
+#On envoie chaque graph à milly
 if __name__ == "__main__":
-    print("hello world")
 
     gra = rdflib.Graph()
-    #result = gra.parse("http://www.w3.org/People/Berners-Lee/card") utf-8
-    result = gra.parse("http://dbpedia.org/resource/Schroter") 
-    #gra.load('https://fr.wikipedia.org/wiki/Vin') nope
+    gra2 = rdflib.Graph()
+    #result1 = gra.parse("http://www.w3.org/People/Berners-Lee/card") #utf-8
+    result2 = gra.parse("https://www.youtube.com/watch?v=NQfblrVa9Q4") #646 c'est ascii
+    #gra.parse("OutputTest.txt",format="n3") 
     #owl:sameAs à la place de "=" 
 
     print("graph has %s statements." % len(gra))
-    # prints graph has 79 statements.
+    # prints the number of statements in gra
 
     for subj, pred, obj in gra:
         if (subj, pred, obj) not in gra:
@@ -20,6 +23,6 @@ if __name__ == "__main__":
 
     text_file = open("Output1.txt", "w")
 
-    text_file.write( (gra.serialize(format='n3')).decode("646", "ignore") )
+    text_file.write( ser.decode("utf-8", "ignore") )
 
-    text_file.close()
+    text_file.close() 
