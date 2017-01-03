@@ -67,7 +67,7 @@ def annotations(text):
     except requests.exceptions.HTTPError:
         annot = ''
     triplets = []
-    print(annot)
+    # print(annot)
     for elt in annot:
         subject = elt['URI'][len('http://dbpedia.org/resource/'):]
         function = 'type'
@@ -84,6 +84,7 @@ def annotations(text):
 
 
 def main(data):
+    data = data[0]
     output = {}
     for key, value in data.items():
         print(key)
