@@ -8,6 +8,7 @@ import requests
 import json
 import re
 import time
+import urllib.request
 
 
 
@@ -212,7 +213,8 @@ def percentage(part, whole):
   return 100 * float(part)/float(whole)
     
     
-def routineMatrice(listeGraphe,parametreQuery,precision):
+def routineMatrice(dictGraphe,parametreQueryList,precision):
+    listeGraphe=dictGraphe.keys()
     initMatrice,Inititems = initMatriceSim(listeGraphe|[0],getSVO(listeGraphe[0]))
     matricePrevTemp = initMatrice
     itemsPrevTemp = initItems
@@ -221,17 +223,17 @@ def routineMatrice(listeGraphe,parametreQuery,precision):
         itemSuivTemp = getSVO(listeGraphe[indexMatrice])
         itemsPrevTemp,matricePrevTemp = createMatriceSimPredicat(matricePrevTemp,itemsPrevTemp,itemSuivTemp)
     #Regroupement par rapport au critère(parametreQuery) et à la précision 
-    result = [itemsPrevTemp,matricePrevTemp] 
-    matriceCritere = searchByCritere(result,parametreQuery,precision)
+    result = [itemsPrevTemp,matricePrevTemp]
     #QUEL RESULTAT JE DOIS AVOIR ?
-    listeGraphe = grouperGraphes(matriceCritere,precision)
+    listMatrice =[]
+    listListGraph=[]
+    for itemQuery in paramatereQuery :
+        listMatrice.append(searchByCritere(result,itemQuery,precision))
+        listeGraphe.append(grouperGraphes(matriceCritere,precision))
+    return listMatrice,listListGraph
     
     
-    
-    
-    
-    
-    
+
 # graphe1=graphRDF("http://www.azlyrics.com/lyrics/joeybada/waves.html")
 # graphe2=graphRDF("http://www.lyricsmania.com/waves_lyrics_joey_badass.html")
 # SVO1=getSVO(graphe1[0])
@@ -257,8 +259,10 @@ def createUrl(parametres):
     
 def recupJsonText(Url):
     #Recupere via une url le code Json
+    st=time.time()
     page = requests.get(Url)
     jsonFile= json.loads(page.content.decode("utf-8"))
+    print("CA A PRIS 2  : " ,(time.time()-st))
     return jsonFile
 
 def recupUrlDataVIew (jsonFile):
