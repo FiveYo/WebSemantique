@@ -48,13 +48,14 @@ def graphRDF(donneeEntree):
             graInter = Graph()
             for s, p, o in graGeneral:
                 #print(str(p).split(":",1)[1]) 
+                
                 graInter += gra.triples( (None, p, None) )
                 
             graFinal = Graph()
             graphEpurer = Graph()
             graphEpurer.parse("graphEpurer.txt",format="n3") 
             graFinal = graInter - graphEpurer
-            graphUrl[str(key)] = graFinal   
+            graphUrl[str(key)] = gra
     return graphUrl 
 
 def graphRDFVrai():

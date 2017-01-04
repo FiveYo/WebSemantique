@@ -101,10 +101,11 @@ def routineMatrice(dictGraphe,parametreQueryList):
     listeUrl = list(dictGraphe.keys())
     dictMatrice = {}
     for itemQuery in parametreQueryList :
-        
+        Temp=[]
         listeTemp=grouperGraphes(itemQuery.upper(),listeGraphe)
-        dictMatrice[itemQuery]=listeTemp
-        
+        for item in listeTemp :
+            Temp.append(listeUrl[item])
+        dictMatrice[itemQuery]=Temp
     return dictMatrice
 
 

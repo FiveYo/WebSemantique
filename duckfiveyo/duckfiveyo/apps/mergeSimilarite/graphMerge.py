@@ -63,6 +63,9 @@ def parsageItemUrl(Item):
 def getSVO(Graphe):
     listeSVO=[]
     for s,p,o in Graphe:
+        print(s)
+        print(p)
+        print(o)
         sTemp=parsageItemUrl(s)
         pTemp=parsageItemUrl(p)
         oTemp=parsageItemUrl(o)
@@ -88,7 +91,7 @@ def grouperGraphes(itemQuery,listeGraphe):
                 temp=re.split(" |_|:|#", items)
                 for item in temp:
                     result = jaccard(item,itemQuery)
-                    if result < 2 :
+                    if result < 1 :
                         listresult.append(indexgraph)
                         break
 
