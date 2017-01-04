@@ -12,11 +12,8 @@
 @prefix ical: <http://www.w3.org/2002/12/cal/icaltzd#> .
 @prefix ma: <http://www.w3.org/ns/ma-ont#> .
 @prefix md: <http://www.w3.org/ns/md#> .
-@prefix ns1: <http://ogp.me/ns#video:> .
-@prefix ns2: <al:ios:> .
-@prefix ns3: <al:android:> .
-@prefix ns4: <fb:> .
-@prefix ns5: <al:web:> .
+@prefix ns1: <article:> .
+@prefix ns2: <fb:> .
 @prefix og: <http://ogp.me/ns#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -42,93 +39,16 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://www.youtube.com/watch?v=NQfblrVa9Q4#a11y-announcements-container> xhv:role xhv:alert .
-
-<https://www.youtube.com/watch?v=NQfblrVa9Q4#action-panel-overflow-button> xhv:role xhv:button .
-
-<https://www.youtube.com/watch?v=NQfblrVa9Q4#content> xhv:role xhv:main .
-
-<https://www.youtube.com/watch?v=NQfblrVa9Q4#player> xhv:role xhv:complementary .
-
-<https://www.youtube.com/watch?v=NQfblrVa9Q4> ns3:app_name "YouTube"@fr ;
-    ns3:package "com.google.android.youtube"@fr ;
-    ns3:url "vnd.youtube://www.youtube.com/watch?v=NQfblrVa9Q4&feature=applinks"@fr ;
-    ns2:app_name "YouTube"@fr ;
-    ns2:app_store_id "544007664"@fr ;
-    ns2:url "vnd.youtube://www.youtube.com/watch?v=NQfblrVa9Q4&feature=applinks"@fr ;
-    ns5:url "https://www.youtube.com/watch?v=NQfblrVa9Q4&feature=applinks"@fr ;
-    ns4:app_id "87741124305"@fr ;
-    og:description "Man Down cover"@fr ;
-    og:image "https://i.ytimg.com/vi/NQfblrVa9Q4/maxresdefault.jpg"@fr ;
-    og:site_name "YouTube"@fr ;
-    og:title "Rihanna: Man Down"@fr ;
-    og:type "video"@fr ;
-    og:url "https://www.youtube.com/watch?v=NQfblrVa9Q4"@fr ;
-    ns1:height "720"@fr ;
-    ns1:secure_url "https://www.youtube.com/embed/NQfblrVa9Q4"@fr,
-        "https://www.youtube.com/v/NQfblrVa9Q4?version=3&autohide=1"@fr ;
-    ns1:tag "Man Down (Musical Recording)"@fr,
-        "Music (TV Genre)"@fr,
-        "Reggae (Musical Genre)"@fr,
-        "Rihanna (Musical Artist)"@fr,
-        "iMovie"@fr ;
-    ns1:type "application/x-shockwave-flash"@fr,
-        "text/html"@fr ;
-    ns1:url "http://www.youtube.com/v/NQfblrVa9Q4?version=3&autohide=1"@fr,
-        "https://www.youtube.com/embed/NQfblrVa9Q4"@fr ;
-    ns1:width "1280"@fr ;
-    md:item ( [ a schema:VideoObject ;
-                schema:author [ a schema:Person ;
-                        schema:url <http://www.youtube.com/channel/UCcCMvZ4vmOA3qM2P_nyB21Q> ],
-                    [ a schema:Person ;
-                        schema:url <https://plus.google.com/103678018051985703938> ] ;
-                schema:channelId "UCcCMvZ4vmOA3qM2P_nyB21Q"@fr ;
-                schema:datePublished "2015-04-21"@fr ;
-                schema:description "Man Down cover"@fr ;
-                schema:duration "PT4M24S"@fr ;
-                schema:embedURL <https://www.youtube.com/embed/NQfblrVa9Q4> ;
-                schema:genre "Film & Animation"@fr ;
-                schema:height "720"@fr ;
-                schema:interactionCount "4952131"@fr ;
-                schema:isFamilyFriendly "True"@fr ;
-                schema:name "Rihanna: Man Down"@fr ;
-                schema:paid "False"@fr ;
-                schema:playerType "HTML5 Flash"@fr ;
-                schema:regionsAllowed "AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,SS,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW"@fr ;
-                schema:thumbnail [ a schema:ImageObject ;
-                        schema:height "720"@fr ;
-                        schema:url <https://i.ytimg.com/vi/NQfblrVa9Q4/maxresdefault.jpg> ;
-                        schema:width "1280"@fr ] ;
-                schema:thumbnailUrl <https://i.ytimg.com/vi/NQfblrVa9Q4/maxresdefault.jpg> ;
-                schema:unlisted "False"@fr ;
-                schema:url <https://www.youtube.com/watch?v=NQfblrVa9Q4> ;
-                schema:videoId "NQfblrVa9Q4"@fr ;
-                schema:width "1280"@fr ] ) ;
-    rdfa:usesVocabulary schema: .
-
-[] xhv:role xhv:alert .
-
-[] xhv:role xhv:dialog .
-
-[] xhv:role xhv:menu .
-
-[] xhv:role xhv:alert .
-
-[] xhv:role xhv:menuitem .
-
-[] xhv:role xhv:dialog .
-
-[] xhv:role xhv:menu .
-
-[] xhv:role xhv:menuitem .
-
-[] xhv:role xhv:link .
-
-[] xhv:role xhv:alert .
-
-[] xhv:role xhv:alert .
-
-[] xhv:role xhv:dialog .
-
-[] xhv:role xhv:menuitem .
+<http://www.wimp.com/heart-covers-stairway-to-heaven/> ns1:publisher "http://www.facebook.com/Wimpcom" ;
+    ns2:admins "100000157493021",
+        "100003233116629" ;
+    ns2:app_id "590458081026489" ;
+    ns2:pages "270212045657" ;
+    og:description "The remaining members of the legendary band Heart have gathered to perform at the Kennedy Center Honors. Watch as they cover the classic Led Zeppelin song \"Stairway to Heaven\"." ;
+    og:image "http://garak.wimp.com/images/thumbs/2012/12/39f7ece46ad90f9a72ed73417256cb8f_heaven_1316_866.jpg" ;
+    og:site_name "Wimp.com" ;
+    og:title "Heart Covers \"Stairway To Heaven\"." ;
+    og:type "article" ;
+    og:url "http://www.wimp.com/heart-covers-stairway-to-heaven/" ;
+    md:item () .
 
