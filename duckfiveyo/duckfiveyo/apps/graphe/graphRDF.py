@@ -16,10 +16,10 @@ def graphRDF(donneeEntree):
         gra = Graph()
         #result = gra.parse(data["URI"])
         try:
-            result = gra.parse(key) # (traitement pour enlever les "=")
+            result = gra.parse(key) 
         except Exception:
             next
-        # else:
+        else:
         #     for t in value:
         #         a = b = c = ""
         #         for k,v in t.items():

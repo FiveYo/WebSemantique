@@ -8,7 +8,7 @@ if __name__ == "__main__":
     gra = rdflib.Graph()
     gra2 = rdflib.Graph()
     #result1 = gra.parse("http://www.w3.org/People/Berners-Lee/card") #utf-8
-    result2 = gra.parse("https://fr.wikipedia.org/wiki/Muse_(groupe)") #646 c'est ascii
+    result2 = gra.parse("http://www.wimp.com/heart-covers-stairway-to-heaven/") #646 c'est ascii
     #gra.parse("OutputTest.txt",format="n3") 
     #owl:sameAs à la place de "=" 
 

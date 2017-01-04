@@ -12,6 +12,8 @@
 @prefix ical: <http://www.w3.org/2002/12/cal/icaltzd#> .
 @prefix ma: <http://www.w3.org/ns/ma-ont#> .
 @prefix md: <http://www.w3.org/ns/md#> .
+@prefix ns1: <article:> .
+@prefix ns2: <fb:> .
 @prefix og: <http://ogp.me/ns#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -37,36 +39,16 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://fr.wikipedia.org/wiki/Muse_(groupe)> xhv:license <http://creativecommons.org/licenses/by-sa/3.0/deed.fr> ;
+<http://www.wimp.com/heart-covers-stairway-to-heaven/> ns1:publisher "http://www.facebook.com/Wimpcom" ;
+    ns2:admins "100000157493021",
+        "100003233116629" ;
+    ns2:app_id "590458081026489" ;
+    ns2:pages "270212045657" ;
+    og:description "The remaining members of the legendary band Heart have gathered to perform at the Kennedy Center Honors. Watch as they cover the classic Led Zeppelin song \"Stairway to Heaven\"." ;
+    og:image "http://garak.wimp.com/images/thumbs/2012/12/39f7ece46ad90f9a72ed73417256cb8f_heaven_1316_866.jpg" ;
+    og:site_name "Wimp.com" ;
+    og:title "Heart Covers \"Stairway To Heaven\"." ;
+    og:type "article" ;
+    og:url "http://www.wimp.com/heart-covers-stairway-to-heaven/" ;
     md:item () .
-
-<https://fr.wikipedia.org/wiki/Muse_(groupe)#content> xhv:role xhv:main .
-
-<https://fr.wikipedia.org/wiki/Muse_(groupe)#footer> xhv:role xhv:contentinfo .
-
-<https://fr.wikipedia.org/wiki/Muse_(groupe)#p-Contribuer> xhv:role xhv:navigation .
-
-<https://fr.wikipedia.org/wiki/Muse_(groupe)#p-cactions> xhv:role xhv:navigation .
-
-<https://fr.wikipedia.org/wiki/Muse_(groupe)#p-coll-print_export> xhv:role xhv:navigation .
-
-<https://fr.wikipedia.org/wiki/Muse_(groupe)#p-lang> xhv:role xhv:navigation .
-
-<https://fr.wikipedia.org/wiki/Muse_(groupe)#p-logo> xhv:role xhv:banner .
-
-<https://fr.wikipedia.org/wiki/Muse_(groupe)#p-namespaces> xhv:role xhv:navigation .
-
-<https://fr.wikipedia.org/wiki/Muse_(groupe)#p-navigation> xhv:role xhv:navigation .
-
-<https://fr.wikipedia.org/wiki/Muse_(groupe)#p-personal> xhv:role xhv:navigation .
-
-<https://fr.wikipedia.org/wiki/Muse_(groupe)#p-search> xhv:role xhv:search .
-
-<https://fr.wikipedia.org/wiki/Muse_(groupe)#p-tb> xhv:role xhv:navigation .
-
-<https://fr.wikipedia.org/wiki/Muse_(groupe)#p-variants> xhv:role xhv:navigation .
-
-<https://fr.wikipedia.org/wiki/Muse_(groupe)#p-views> xhv:role xhv:navigation .
-
-<https://fr.wikipedia.org/wiki/Muse_(groupe)#p-wikibase-otherprojects> xhv:role xhv:navigation .
 
