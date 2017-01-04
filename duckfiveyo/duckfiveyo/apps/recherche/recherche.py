@@ -19,7 +19,7 @@ else:
 KEYWORD = ["album", "cover", "partition"]
 REMOVECHAR = [",","+",]
 NB_RESULT_BY_QUERY = 5
-NB_TIRET_TAB = 500
+NB_TIRET_TAB = 40
 NB_ACCORD_PART = 20
 DELIMITER = [" ", "\n", "/", "[", "]", "(", ")"]
 ACCORDS = [
@@ -148,18 +148,12 @@ def info_partition(text):
     nb_tiret = text.count("-") + text.count("\u2014")
     is_tab = nb_tiret > NB_TIRET_TAB
 
-    print("nb tiret : " + str(nb_tiret))
-
     nb_accord = count_accord(text)
     is_part = nb_accord > NB_ACCORD_PART
     # check si c'est une tablature
     # check si il y a des accords
     partition = None
     tab = None
-
-
-    print(is_tab)
-    print(is_part)
 
     if is_part:
         partition = extract_part(text)
@@ -177,7 +171,6 @@ def count_accord(text):
     list_word = re.split(delimiter,text)
     for accord in ACCORDS:
         result += list_word.count(accord)
-    print("nb accords : " + str(result))
     return result
 
 def extract_part(text):
@@ -219,8 +212,5 @@ def extract_tab(text):
                 break
         except:
             break
-
-    print(start)
-    print(end)
     return text[start:end]
 

@@ -2,7 +2,6 @@ from rdflib import Graph, Literal, BNode, Namespace, RDF, URIRef
 from rdflib.namespace import DC, FOAF
 import numpy as np
 from difflib import SequenceMatcher
-from alchemyapi import AlchemyAPI
 from lxml import html
 import requests
 import json

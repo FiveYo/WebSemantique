@@ -53,6 +53,12 @@ def ask(request):
         # remove ceux qui sont vide
         pass
 
+    
+    partition = []
+    for key, value in a_result["quentin"].items():
+        if value["info"]["tab"] or value["info"]["partition"]:
+            partition.append(g_result[key])
+
     # for key, result in a_result["quentin"].items():
     #     pprint.pprint(result)
     # triplet = main(a_result)
