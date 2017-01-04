@@ -84,13 +84,16 @@ def grouperGraphes(itemQuery,listeGraphe):
             if itemQuery in items:
                 listresult.append(indexgraph)
                 break
+            else : 
+                temp=re.split(" |_|:|#", items)
+                for item in temp:
+                    result = jaccard(item,itemQuery)
+                    if result < 2 :
+                        listresult.append(indexgraph)
+                        break
+
     return listresult
         
-def percentage(part, whole):
-    if whole ==0:
-        return 0
-    else :
-        return 100 * float(part)/float(whole)
     
     
 def routineMatrice(dictGraphe,parametreQueryList):
@@ -105,7 +108,34 @@ def routineMatrice(dictGraphe,parametreQueryList):
     return dictMatrice
 
 
+def compte_lettre(mot):
+    d = {}
+    for c in mot:
+        d[c] = d.get(c,0) + 1
+    return d
 
+def jaccard(mot1, mot2):
+    d1 = compte_lettre(mot1)
+    d2 = compte_lettre(mot2)
+    suppression = {}
+    for l in d1:
+        c1 = d1[l]
+        c2 = d2.get(l, 0)  # la lettre l n'appartient pas forcément au second mot
+        if c2 != c1:
+            suppression[l] = c2 - c1
+    ajout = {}
+    for l in d2:
+        if l not in d1:
+            c1 = 0
+            c2 = d2[l]
+            if c2 != c1:
+                ajout[l] = c2 - c1
+        else:
+            # on a déjà compté les lettres présentes dans les deux mots
+            # lors de la première boucle
+            pass
+    dist = sum(abs(x) for x in suppression.values()) + sum(abs(x) for x in ajout.values())
+    return dist
         
 
 # graphe1=graphRDF("http://www.azlyrics.com/lyrics/joeybada/waves.html")
