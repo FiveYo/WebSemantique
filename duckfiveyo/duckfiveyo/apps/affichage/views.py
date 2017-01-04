@@ -26,21 +26,13 @@ def ask(request):
 
     query = arguments["query"]
 
+    query_up = query.upper()
+
     try:
-        query_up = query.upper()
         model_query = Query.objects.get(query=query_up)
         g_result = json.loads(model_query.googleresult.result)
-        a_result = get_result_alchemy(g_result)
-        model_a_result = AlchemyResult(
-            query=model_query,
-            result=json.dumps(a_result)
-        )
-        model_a_result.save()
-        # a_result = json.loads(model_query.alchemyresult.result)
-        # print(g_result.__dict__)
-        # a_result = model_query.alchemyresult.result
+        a_result = json.loads(model_query.alchemyresult.result)
     except ObjectDoesNotExist:
-        query_up = query.upper()
         model_query = Query(query=query_up)
         model_query.save()
         g_result = get_result_google(query_up)

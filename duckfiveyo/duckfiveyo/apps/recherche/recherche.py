@@ -96,7 +96,8 @@ def get_result_alchemy(google_dico):
                 url = value["url"]
                 response = AlchemyObject.text('url', url)
                 # print(str(response["statusInfo"]))
-                dico[url] = response["text"].split(" ")[:150].join(" ")
+                words = response["text"].split(" ")[:150]
+                dico[url] = " ".join(words)
                 break
             except KeyError:
                 # print(str(i) + "ème echec")
