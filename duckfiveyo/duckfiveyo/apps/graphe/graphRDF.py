@@ -11,7 +11,7 @@ from rdflib.namespace import DC, FOAF
 def graphRDF(donneeEntree):
     graphUrl = {}
     graGeneral = Graph()
-    graGeneral.parse("GraphGeneral.txt",format="n3") 
+    graGeneral.parse("duckfiveyo/static/GraphGeneral.txt",format="n3") 
     for key,value in donneeEntree.items():
         gra = Graph()
         #result = gra.parse(data["URI"])

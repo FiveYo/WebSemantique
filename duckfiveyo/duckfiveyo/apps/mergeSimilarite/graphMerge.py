@@ -87,7 +87,7 @@ def grouperGraphes(itemQuery,listeGraphe):
                 temp=re.split(" |_|:|#", items)
                 for item in temp:
                     result = jaccard(item,itemQuery)
-                    if result < 2 :
+                    if result < 3 :
                         listresult.append(indexgraph)
                         break
 

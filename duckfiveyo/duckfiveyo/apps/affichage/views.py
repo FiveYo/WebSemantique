@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 
 from duckfiveyo.apps.annotation.dbspotlight import main
-from duckfiveyo.apps.graphe.justin import graphRDF
+from duckfiveyo.apps.graphe.graphRDF import graphRDF
 from duckfiveyo.apps.mergeSimilarite.graphMerge import routineMatrice
 
 from duckfiveyo.apps.recherche.recherche import get_result_google, get_result_alchemy
@@ -63,6 +63,26 @@ def ask(request):
     #     pprint.pprint(result)
     # triplet = main(a_result)
 
+    categories = ["album", "cover", "partition", "tablature", "chords"]
+
+    dico = graphRDF(a_result["mathieu"])
+
+    dico_milly = routineMatrice(dico, categories)
+
+    pprint.pprint(dico_milly)
+
+    album_url_list = dico_milly[categories[0]]
+    cover_url_list = dico_milly[categories[1]]
+    partition_url_list = dico_milly[categories[2]]
+    tab_url_list = dico_milly[categories[3]]
+    chords_url_list = dico_milly[categories[4]]
+
+
+    cover = []
+
+    for url in cover_url_list:
+        cover.append(g_result[url])
+    
     #   print(triplet)
 
     # dicoMilly = graphRDF(triplet)
