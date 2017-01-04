@@ -44,6 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'duckfiveyo',
     'duckfiveyo.apps.affichage',
+    'duckfiveyo.apps.annotation',
+    'duckfiveyo.apps.graphe',
+    'duckfiveyo.apps.mergeSimilarite',
+    'duckfiveyo.apps.recherche'
+
 ]
 
 MIDDLEWARE = [
