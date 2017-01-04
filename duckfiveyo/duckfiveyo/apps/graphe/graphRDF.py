@@ -19,35 +19,32 @@ def graphRDF(donneeEntree):
             result = gra.parse(key) # (traitement pour enlever les "=")
         except Exception:
             next
-        else:
-            for t in value:
-                a = b = c = ""
-                for k,v in t.items():
-                    print(k,v)
-                    if k=='s':
-                        if v['type']=='uri':
-                            a = URIRef(v['value'])
-                            print("ok")
-                        elif v['type']=='literal':
-                            a = Literal(v['value'])
-                        elif v['type']=='uri':
-                            a = BNode(v['value'])
-                    elif k=='p':
-                        if v['type']=='uri':
-                            b = URIRef(v['value'])
-                        elif v['type']=='literal':
-                            b = Literal(v['value'])
-                        elif v['type']=='uri':
-                            b = BNode(v['value'])
-                    elif k=='o':
-                        if v['type']=='uri':
-                            c = URIRef(v['value'])
-                        elif v['type']=='literal':
-                            c = Literal(v['value'])
-                        elif v['type']=='uri':
-                            c = BNode(v['value'])
-                print("a c'est: {}, b c'est : {}, c c'est: {} niggae".format(a,b,c))
-                gra.add( (a,b,c) )
+        # else:
+        #     for t in value:
+        #         a = b = c = ""
+        #         for k,v in t.items():
+        #             if k=='s':
+        #                 if v['type']=='uri':
+        #                     a = URIRef(v['value'])
+        #                 elif v['type']=='literal':
+        #                     a = Literal(v['value'])
+        #                 elif v['type']=='uri':
+        #                     a = BNode(v['value'])
+        #             elif k=='p':
+        #                 if v['type']=='uri':
+        #                     b = URIRef(v['value'])
+        #                 elif v['type']=='literal':
+        #                     b = Literal(v['value'])
+        #                 elif v['type']=='uri':
+        #                     b = BNode(v['value'])
+        #             elif k=='o':
+        #                 if v['type']=='uri':
+        #                     c = URIRef(v['value'])
+        #                 elif v['type']=='literal':
+        #                     c = Literal(v['value'])
+        #                 elif v['type']=='uri':
+        #                     c = BNode(v['value'])
+        #         gra.add( (a,b,c) )
             graInter = Graph()
             for s, p, o in graGeneral:
                 #print(str(p).split(":",1)[1]) 
@@ -57,12 +54,7 @@ def graphRDF(donneeEntree):
             graphEpurer = Graph()
             graphEpurer.parse("graphEpurer.txt",format="n3") 
             graFinal = graInter - graphEpurer
-            graphUrl[str(key)] = graFinal
-            text_file = open("BORDEL.txt", "w")
-
-            text_file.write( (graInter.serialize(format='n3')).decode("utf-8") )
-
-            text_file.close()        
+            graphUrl[str(key)] = graFinal   
     return graphUrl 
 
 def graphRDFVrai():
