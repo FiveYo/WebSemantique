@@ -63,9 +63,6 @@ def parsageItemUrl(Item):
 def getSVO(Graphe):
     listeSVO=[]
     for s,p,o in Graphe:
-        print(s)
-        print(p)
-        print(o)
         sTemp=parsageItemUrl(s)
         pTemp=parsageItemUrl(p)
         oTemp=parsageItemUrl(o)
@@ -91,7 +88,7 @@ def grouperGraphes(itemQuery,listeGraphe):
                 temp=re.split(" |_|:|#", items)
                 for item in temp:
                     result = jaccard(item,itemQuery)
-                    if result < 1 :
+                    if result < 2 :
                         listresult.append(indexgraph)
                         break
 
@@ -104,10 +101,11 @@ def routineMatrice(dictGraphe,parametreQueryList):
     listeUrl = list(dictGraphe.keys())
     dictMatrice = {}
     for itemQuery in parametreQueryList :
-        
+        Temp=[]
         listeTemp=grouperGraphes(itemQuery.upper(),listeGraphe)
-        dictMatrice[itemQuery]=listeTemp
-        
+        for item in listeTemp :
+            Temp.append(listeUrl[item])
+        dictMatrice[itemQuery]=Temp
     return dictMatrice
 
 
