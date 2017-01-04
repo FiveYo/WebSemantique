@@ -52,18 +52,7 @@ def ask(request):
         # remove ceux qui sont vide
         pass
 
-
-        # dico_mathieu, dico_view = routineQuery(query)
-        print("ici")
-    # googleResultView = json.dumps(dico_view)
-    # googleResultMathieu = json.dumps(dico_mathieu)
-
-        # model = GoogleResult(query=query, result=googleResultView, mathieu=googleResultMathieu)
-        # model.save()
-    
-    # print(dico_view)
-
-    # triplet = main(dico_mathieu)
+    # triplet = main(a_result)
 
 
     # dicoMilly = graphRDF(triplet)
