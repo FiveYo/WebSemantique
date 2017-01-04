@@ -53,7 +53,7 @@ def graphRDF(donneeEntree):
                 
             graFinal = Graph()
             graphEpurer = Graph()
-            graphEpurer.parse("graphEpurer.txt",format="n3") 
+            graphEpurer.parse("duckfiveyo/static/graphEpurer.txt",format="n3") 
             graFinal = graInter - graphEpurer
             graphUrl[str(key)] = gra
     return graphUrl 

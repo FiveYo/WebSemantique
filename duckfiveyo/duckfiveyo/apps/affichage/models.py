@@ -34,3 +34,13 @@ class AlchemyResult(models.Model):
     result = { "http://..." : "150 premiers mots venant de AlchemyAPI" }
     """
     result = models.TextField()
+
+class FinalResult(models.Model):
+    """
+    Contient les 3 dictionnaires associées à une query
+    """
+
+    query = models.OneToOneField(Query)
+    tout = models.TextField()
+    cover = models.TextField()
+    partition = models.TextField()

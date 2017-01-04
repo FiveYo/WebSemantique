@@ -199,7 +199,7 @@ def extract_tab(text):
     for index in indices_tiret:
         try:
             if text[index + 1] == "-" or text[index + 1] == "\u2014":
-                start = index
+                start = index if index == 0 else index - 1
                 break
         except:
             break
