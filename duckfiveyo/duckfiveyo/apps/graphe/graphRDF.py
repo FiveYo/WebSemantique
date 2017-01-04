@@ -1,10 +1,13 @@
 from rdflib import Graph, Literal, BNode, Namespace, RDF, URIRef
 from rdflib.namespace import DC, FOAF
 
-#{url1: [(triplet RDF 1), (triplet RDF 2), ...],
-#  url2: [(triplet RDF 1), (triplet RDF 2), ...],
-#  ...
-# }
+# {'http://dbpedia.org/resource/Partition': [{'p': {'value': 'http://dbpedia.org/ontology/wikiPageExternalLink', 'type': 'uri'},
+#  'o': {'value': 'https://urresearch.rochester.edu/viewContributorPage.action?personNameId=664', 'type': 'uri'}, 
+#  's': {'value': 'http://dbpedia.org/resource/Wolfgang_Amadeus_Mozart', 'type': 'uri'}},
+#   {'p': {'value': 'http://www.w3.org/2002/07/owl#sameAs', 'type': 'uri'}, 
+#   'o': {'value': 'http://eu.dbpedia.org/resource/Wolfgang_Amadeus_Mozart', 'type': 'uri'}, 
+#   's': {'value': 'http://dbpedia.org/resource/Wolfgang_Amadeus_Mozart', 'type': 'uri'}}]}
+
 def graphRDF(donneeEntree):
     graphUrl = {}
     graGeneral = Graph()
@@ -18,13 +21,48 @@ def graphRDF(donneeEntree):
             next
         else:
             for t in value:
-                print(t)
-                gra.add( (BNode(t[0]),BNode(t[1]),Literal(t[2])) )
+                a = b = c = ""
+                for k,v in t.items():
+                    print(k,v)
+                    if k=='s':
+                        if v['type']=='uri':
+                            a = URIRef(v['value'])
+                            print("ok")
+                        elif v['type']=='literal':
+                            a = Literal(v['value'])
+                        elif v['type']=='uri':
+                            a = BNode(v['value'])
+                    elif k=='p':
+                        if v['type']=='uri':
+                            b = URIRef(v['value'])
+                        elif v['type']=='literal':
+                            b = Literal(v['value'])
+                        elif v['type']=='uri':
+                            b = BNode(v['value'])
+                    elif k=='o':
+                        if v['type']=='uri':
+                            c = URIRef(v['value'])
+                        elif v['type']=='literal':
+                            c = Literal(v['value'])
+                        elif v['type']=='uri':
+                            c = BNode(v['value'])
+                print("a c'est: {}, b c'est : {}, c c'est: {} niggae".format(a,b,c))
+                gra.add( (a,b,c) )
             graInter = Graph()
             for s, p, o in graGeneral:
+                #print(str(p).split(":",1)[1]) 
                 graInter += gra.triples( (None, p, None) )
+                
+            graFinal = Graph()
+            graphEpurer = Graph()
+            graphEpurer.parse("graphEpurer.txt",format="n3") 
+            graFinal = graInter - graphEpurer
+            graphUrl[str(key)] = graFinal
+            text_file = open("BORDEL.txt", "w")
 
-            graphUrl[str(key)] = gra
+            text_file.write( (graInter.serialize(format='n3')).decode("utf-8") )
+
+            text_file.close()        
     return graphUrl 
 
 def graphRDFVrai():
