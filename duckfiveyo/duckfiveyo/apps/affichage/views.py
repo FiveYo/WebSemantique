@@ -11,6 +11,7 @@ from duckfiveyo.apps.recherche.recherche import get_result_google, get_result_al
 from .models import Query, GoogleResult, AlchemyResult
 
 import json
+import pprint
 
 def home(request):
     return render_to_response("home.html")
@@ -52,8 +53,11 @@ def ask(request):
         # remove ceux qui sont vide
         pass
 
+    # for key, result in a_result["quentin"].items():
+    #     pprint.pprint(result)
     # triplet = main(a_result)
 
+    #   print(triplet)
 
     # dicoMilly = graphRDF(triplet)
 

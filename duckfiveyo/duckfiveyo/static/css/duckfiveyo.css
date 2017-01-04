@@ -6,6 +6,10 @@
     position: absolute;
 }
 
+.youtube-player{
+    width: 100%;
+}
+
 @media only screen and (max-width: 540px) {
     .button-absolute{
         position: initial;
